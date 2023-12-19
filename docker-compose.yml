@@ -1,0 +1,15 @@
+version: '3'
+services:
+  api_db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+  server:
+    build: ./lab-server
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api_db
+    ports:
+      - "1039:1039"
